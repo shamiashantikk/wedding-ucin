@@ -1,0 +1,433 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap');
+
+
+/* MINIMAL IVORY & BURGUNDY ENVELOPE */
+
+.invitation-page {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  background: #f7f2eb;
+  color: #702b3b;
+  font-family: 'Playfair Display', serif;
+  text-align: center;
+  padding: 24px;
+}
+
+.envelope-container {
+  width: 100%;
+  max-width: 450px;
+}
+
+.intro-text {
+  color: #702b3b;
+  font-size: 18px;
+  letter-spacing: 4px;
+  margin-bottom: 48px;
+}
+
+/* Envelope */
+
+.envelope {
+  position: relative;
+  width: 300px;
+  height: 190px;
+  margin: 0 auto 45px;
+  perspective: 1000px;
+  cursor: pointer;
+  filter: drop-shadow(0 12px 18px rgba(80, 50, 45, 0.12));
+  overflow: visible;
+}
+
+.envelope-back {
+  position: absolute;
+  inset: 0;
+  background: #eee6dc;
+  border: 1px solid #e2d7c9;
+  border-radius: 3px;
+  z-index: 1;
+}
+
+
+/* Invitation card */
+
+.envelope-card {
+  position: absolute;
+  width: 84%;
+  height: 155px;
+  left: 8%;
+  bottom: 8px;
+  box-sizing: border-box;
+  background: #fffdf9;
+  border: 1px solid #e7ded2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  color: #702b3b;
+  font-size: 12px;
+  letter-spacing: 2px;
+  z-index: 2;
+  opacity: 0;
+  visibility: hidden;
+}
+
+/* Hide card until envelope is clicked */
+.envelope:not(.opened) .envelope-card {
+  opacity: 0;
+}
+
+/* Slide card out after flap starts opening */
+.envelope.opened .envelope-card {
+  animation: card-slide 2s ease 1.5s forwards;
+}
+
+.envelope-card::before {
+  content: "W E D D I N G";
+  font-size: 9px;
+  letter-spacing: 3px;
+  color: #a58b75;
+}
+
+.card-heart {
+  color: #702b3b;
+  font-size: 20px;
+}
+
+@keyframes card-slide {
+  0% {
+    opacity: 0;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  10% {
+    opacity: 0;
+    transform: translateY(0);
+  }
+
+  100% {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(-145px);
+  }
+}
+
+/* Envelope front */
+.envelope-front {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(145deg, #f8f3eb, #e9dfd2);
+  clip-path: polygon(
+    0 0,
+    50% 55%,
+    100% 0,
+    100% 100%,
+    0 100%
+  );
+  border-radius: 3px;
+  z-index: 3;
+}
+
+/* Envelope flap */
+
+.envelope-flap {
+  position: absolute;
+  inset: 0;
+  background: #f4ede3;
+  clip-path: polygon(0 0, 100% 0, 50% 60%);
+  transform-origin: top;
+  z-index: 5;
+}
+
+.envelope.opened .envelope-front {
+  z-index: 3;
+}
+
+.envelope.opened .envelope-flap {
+  z-index: 1;
+  animation: openFlap 1.5s ease-in-out forwards;
+}
+
+/* Minimal wax seal */
+
+.wax-seal {
+  position: absolute;
+  top: 48%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 43px;
+  height: 43px;
+  border-radius: 50%;
+  background: #702b3b;
+  color: #ead8b8;
+  border: 1px solid #a77c62;
+  box-shadow: 0 3px 8px rgba(65, 25, 30, 0.18);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+  z-index: 6;
+  transition: opacity 0.3s ease;
+}
+
+.envelope.opened .wax-seal {
+  opacity: 0;
+}
+
+/* Text */
+
+.envelope-container h1 {
+  font-size: 34px;
+  font-weight: 400;
+  font-style: italic;
+  color: #702b3b;
+  margin-bottom: 12px;
+}
+
+.instruction {
+  color: #927c70;
+  font-size: 14px;
+  letter-spacing: 1.5px;
+  margin-top: 12px;
+}
+
+/* Animations */
+
+@keyframes openFlap {
+  from {
+    transform: rotateX(0deg);
+  }
+  to {
+    transform: rotateX(180deg);
+  }
+}
+
+@keyframes reveal {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Mobile */
+
+@media (max-width: 480px) {
+  .envelope {
+    width: 260px;
+    height: 165px;
+  }
+
+  .envelope-container h1 {
+    font-size: 30px;
+  }
+
+  .intro-text {
+    font-size: 14px;
+    letter-spacing: 3px;
+  }
+}
+
+/* Wedding invitation layout */
+.wedding-section {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  animation: reveal 1.2s ease;
+}
+
+.wedding-card {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background:
+    radial-gradient(ellipse at 20% 20%, #f5e2e2, transparent 55%),
+    #fff9f6;
+  border: 1px solid #d9b7b8;
+  box-shadow: 0 15px 45px #702b3b20;
+  position: relative;
+  overflow: hidden;
+}
+
+.card-panel {
+  padding: 45px 35px;
+  text-align: center;
+  color: #702b3b;
+  position: relative;
+}
+
+.left-panel {
+  border-right: 1px solid #d9b7b8;
+}
+
+.bismillah {
+  font-size: 30px;
+  margin: 0 0 20px;
+}
+
+.invitation-heading,
+.section-heading {
+  font-size: 19px;
+  letter-spacing: 4px;
+  font-weight: 600;
+  margin: 20px 0;
+}
+
+.ornament {
+  color: #8d3547;
+  margin: 15px auto;
+  font-size: 14px;
+}
+
+.greeting {
+  font-weight: 600;
+  font-style: italic;
+  line-height: 1.6;
+}
+
+.intro,
+.right-intro,
+.closing-message {
+  font-size: 15px;
+  line-height: 1.8;
+}
+
+.section-heading {
+  border-top: 1px solid #c28b91;
+  border-bottom: 1px solid #c28b91;
+  padding: 10px 0;
+  font-size: 16px;
+}
+
+.subtitle {
+  font-style: italic;
+  font-size: 15px;
+}
+
+.script-name,
+.family-signature {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-weight: 400;
+  color: #762a3c;
+}
+
+.script-name {
+  font-size: clamp(22px, 2.5vw, 34px);
+  line-height: 1.3;
+  margin: 15px 0;
+}
+
+.ampersand {
+  font-size: 30px;
+  font-style: italic;
+}
+
+.aqiqah-heading {
+  margin-top: 30px;
+}
+
+.baby-name {
+  margin-bottom: 5px;
+}
+
+.family-name {
+  font-size: 19px;
+  font-style: italic;
+  margin-top: 0;
+}
+
+.event-details {
+  margin: 30px 0;
+  text-align: left;
+}
+
+.detail-row {
+  display: grid;
+  grid-template-columns: 25px 75px 1fr;
+  align-items: start;
+  gap: 12px;
+  padding: 14px 0;
+  border-bottom: 1px solid #ead7d6;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.detail-row svg {
+  width: 20px;
+  height: 20px;
+  color: #762a3c;
+}
+
+.detail-row strong {
+  letter-spacing: 1px;
+  font-size: 12px;
+}
+
+.map-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 24px;
+  background: #762a3c;
+  color: white;
+  text-decoration: none;
+  border-radius: 30px;
+  transition: background 0.3s ease;
+  font-size: 14px;
+}
+
+.map-button:hover {
+  background: #963f52;
+}
+
+.meaningful-message {
+  font-size: 22px;
+  font-style: italic;
+  color: #762a3c;
+  margin: 25px 0;
+}
+
+.thank-you {
+  line-height: 1.8;
+}
+
+.family-signature {
+  font-size: 35px;
+  margin-top: 10px;
+}
+
+/* Mobile layout */
+
+@media (max-width: 700px) {
+  .wedding-card {
+    grid-template-columns: 1fr;
+  }
+
+  .left-panel {
+    border-right: none;
+    border-bottom: 1px solid #d9b7b8;
+  }
+
+  .card-panel {
+    padding: 35px 22px;
+  }
+
+  .invitation-heading {
+    font-size: 15px;
+    letter-spacing: 2px;
+  }
+
+  .detail-row {
+    grid-template-columns: 22px 65px 1fr;
+    gap: 8px;
+    font-size: 13px;
+  }
+}

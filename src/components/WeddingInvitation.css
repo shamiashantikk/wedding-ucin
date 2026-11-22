@@ -1,0 +1,602 @@
+@import url('https://fonts.googleapis.com/css2?family=Allura&family=Playfair+Display:wght@400;500;600;700&display=swap');
+.wedding-section {
+  min-height: 100vh;
+  padding: 35px 16px;
+  display: flex;
+  justify-content: center;
+}
+
+.invitation-card {
+  position: relative;
+  width: 100%;
+  max-width: 760px;
+  padding: 55px 65px;
+  overflow: hidden;
+  text-align: center;
+  color: #511b25;
+  font-family: 'Playfair Display', Georgia, serif;
+  background:
+    radial-gradient(ellipse at 5% 10%, #f1dada 0%, transparent 28%),
+    radial-gradient(ellipse at 95% 85%, #f1dada 0%, transparent 28%),
+    #fff9f8;
+  box-shadow: 0 10px 35px rgba(75, 20, 30, 0.12);
+}
+
+.invitation-header {
+  margin-bottom: 25px;
+}
+
+.bismillah {
+  font-size: 38px;
+  margin: 0 0 25px;
+  line-height: 1.8;
+}
+
+.invitation-header h1 {
+  font-size: 23px;
+  letter-spacing: 5px;
+  font-weight: 600;
+}
+
+.ornament {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin: 18px auto;
+  max-width: 440px;
+  color: #761e2c;
+}
+
+.ornament::before,
+.ornament::after {
+  content: '';
+  height: 1px;
+  flex: 1;
+  background: #b77b80;
+}
+
+.invitation-intro {
+  font-size: 17px;
+  line-height: 1.7;
+  margin-bottom: 35px;
+}
+
+.greeting {
+  font-weight: 700;
+  font-style: italic;
+  margin-bottom: 15px;
+}
+
+/* EVENT SEPARATION CARDS */
+.celebration {
+  width: 100%;
+  max-width: 560px;
+  box-sizing: border-box;
+  margin: 25px auto;
+  padding: 22px 16px;
+  background: rgba(248, 237, 237, 0.65);
+  border-radius: 10px;
+}
+
+.celebration h2 {
+  margin-top: 0;
+  margin-bottom: 12px;
+}
+
+.celebration .subtitle {
+  margin-bottom: 15px;
+}
+
+.aqiqah {
+  margin-top: 22px;
+}
+
+.subtitle {
+  font-style: italic;
+  font-size: 18px;
+  margin: 8px 0;
+}
+
+.script-name {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-weight: 600;
+  color: #701c2a;
+  font-size: clamp(30px, 4vw, 38px);
+  line-height: 1.4;
+  margin: 8px 0;
+  text-wrap: balance;
+}
+
+.ampersand {
+  font-family: 'Allura', cursive;
+  font-size: 38px;
+  line-height: 1;
+  margin: 0;
+}
+
+.event-details {
+  max-width: 550px;
+  margin: 35px auto;
+  text-align: left;
+}
+
+.detail-row {
+  display: grid;
+  grid-template-columns: 35px 100px 1fr;
+  align-items: start;
+  gap: 12px;
+  margin: 14px 0;
+  font-size: 18px;
+  line-height: 1.5;
+}
+
+.detail-row svg {
+  width: 25px;
+  height: 25px;
+  stroke: #701c2a;
+}
+
+.detail-row strong {
+  border-right: 1px solid #9e5961;
+  padding-right: 10px;
+}
+
+.detail-row span {
+  position: relative;
+  top: -5px;
+}
+
+.invitation-closing {
+  font-size: 17px;
+  line-height: 1.7;
+  margin-top: 35px;
+}
+
+.thank-you {
+  margin-top: 20px;
+}
+
+.family-name {
+  font-size: 54px;
+  margin-top: 5px;
+  color: #701c2a;
+}
+
+/* Larger floral decorations */
+.flower-decoration {
+  position: absolute;
+  width: clamp(230px, 40%, 350px);
+  height: auto;
+  object-fit: contain;
+  z-index: 0;
+  pointer-events: none;
+  user-select: none;
+}
+
+.flower-top-right {
+  top: -15px;
+  right: -15px;
+}
+
+.flower-bottom-left {
+  bottom: -15px;
+  left: -15px;
+}
+
+/* Keep invitation content above the decorations */
+.invitation-card > :not(.flower-decoration):not(.petal-layer):not(.music-button) {
+  position: relative;
+  z-index: 1;
+}
+
+/* Keep the petal layer positioned over the card */
+.invitation-card > .petal-layer {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.petal-layer {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.petal {
+  position: absolute;
+  top: -25px;
+  width: 13px;
+  height: 19px;
+  border-radius: 100% 0 100% 0;
+  background: linear-gradient(135deg, #e9a2a9, #a83d50);
+  opacity: 0;
+  animation: petal-fall 8s linear infinite;
+}
+
+.petal-1 { left: 8%; animation-delay: 0s; }
+.petal-2 { left: 22%; animation-delay: 1s; }
+.petal-3 { left: 38%; animation-delay: 2s; }
+.petal-4 { left: 52%; animation-delay: 3s; }
+.petal-5 { left: 67%; animation-delay: 4s; }
+.petal-6 { left: 79%; animation-delay: 5s; }
+.petal-7 { left: 91%; animation-delay: 6s; }
+.petal-8 { left: 45%; animation-delay: 7s; }
+
+@keyframes petal-fall {
+  0% {
+    top: -25px;
+    transform: translateX(0) rotate(0deg);
+    opacity: 0;
+  }
+
+  15% {
+    opacity: 0.9;
+  }
+
+  50% {
+    transform: translateX(35px) rotate(180deg);
+  }
+
+  100% {
+    top: 100%;
+    transform: translateX(-25px) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+
+/* Wedding Countdown */
+.wedding-countdown {
+  margin: 25px auto 35px;
+  max-width: 500px;
+}
+
+.countdown-title {
+  font-size: 27px;
+  color: #701c2a;
+  margin-bottom: 15px;
+}
+
+.countdown-items {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.countdown-item {
+  min-width: 65px;
+  padding: 14px 12px;
+  background: #f5e8e6;
+  border: 1px solid #c9a16b;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  color: #702b3b;
+}
+
+.countdown-item span {
+  font-size: 25px;
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+.countdown-item small {
+  font-size: 11px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #927c70;
+}
+
+.countdown-finished {
+  color: #701c2a;
+  font-size: 20px;
+}
+
+/* map pin */
+/* Google Maps Button */
+.map-button-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 25px;
+}
+
+.map-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 13px 30px;
+  border: 1px solid #c9a16b;
+  border-radius: 30px;
+  background: linear-gradient(135deg, #701c2a, #963b4a);
+  color: #fff9f5;
+  font-family: 'Playfair Display', serif;
+  font-size: 15px;
+  text-decoration: none;
+  letter-spacing: 1px;
+  box-shadow: 0 4px 12px rgba(81, 27, 37, 0.2);
+  transition: all 0.3s ease;
+}
+
+.map-button:hover {
+  background: linear-gradient(135deg, #a77a43, #c9a16b);
+  color: white;
+  transform: translateY(-3px);
+  box-shadow: 0 7px 16px rgba(81, 27, 37, 0.25);
+}
+
+.map-button svg {
+  stroke-width: 2;
+}
+
+/* Additional corner ornaments using the card background */
+.invitation-card {
+  background-image:
+    radial-gradient(ellipse at top left, rgba(212, 175, 55, 0.10), transparent 22%),
+    radial-gradient(ellipse at bottom right, rgba(212, 175, 55, 0.10), transparent 22%),
+    radial-gradient(circle at center, #fffdf9, #fbf3ed);
+}
+
+/* BACKGROUND MUSIC BUTTON */
+.music-button {
+  position: absolute;
+  top: 30px;
+  left: 30px;
+  right: auto;
+  bottom: auto;
+  z-index: 10;
+  width: 44px;
+  height: 44px;
+  border: 1px solid #c49a3a;
+  border-radius: 50%;
+  background: rgba(255, 250, 240, 0.9);
+  color: #b38a2e;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(150, 110, 30, 0.15);
+  transition: all 0.3s ease;
+}
+
+.music-button:hover {
+  background: #c49a3a;
+  color: white;
+  transform: scale(1.08);
+}
+
+
+/* =================================
+   ROMANTIC & READABLE TYPOGRAPHY
+================================= */
+
+/* Main invitation heading */
+.invitation-header h1 {
+  font-size: 25px;
+  letter-spacing: 3px;
+  line-height: 1.5;
+}
+
+/* Arabic opening */
+.bismillah {
+  font-size: 38px;
+  line-height: 1.9;
+}
+
+/* Body paragraphs */
+.invitation-intro,
+.invitation-closing {
+  font-size: 18px;
+  line-height: 1.85;
+  color: #493a36;
+}
+
+/* Greeting */
+.greeting {
+  font-size: 19px;
+  color: #701c2a;
+}
+
+/* Event headings */
+.celebration h2 {
+  font-size: 22px;
+  letter-spacing: 5px;
+  line-height: 1.5;
+}
+
+/* Event subtitles */
+.subtitle {
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+/* Child's name */
+.child-name {
+  font-size: 40px;
+}
+
+/* Countdown labels */
+.countdown-item small {
+  font-size: 13px;
+}
+
+/* Google Maps button */
+.map-button {
+  font-size: 16px;
+}
+
+/* MOBILE LAYOUT */
+@media (max-width: 600px) {
+
+  .wedding-section {
+    padding: 12px 8px;
+  }
+
+  .invitation-card {
+    padding: 48px 24px;
+  }
+
+  /* Header */
+  .invitation-header {
+    margin-bottom: 20px;
+  }
+
+  .bismillah {
+    font-size: 29px;
+    line-height: 1.8;
+    margin-bottom: 20px;
+  }
+
+  .invitation-header h1 {
+    font-size: 17px;
+    letter-spacing: 2px;
+    line-height: 1.6;
+  }
+
+  .ornament {
+    max-width: 85%;
+    gap: 10px;
+    margin: 16px auto;
+  }
+
+  /* Introduction and closing */
+  .invitation-intro,
+  .invitation-closing {
+    font-size: 15px;
+    line-height: 1.8;
+  }
+
+  .invitation-intro {
+    margin-bottom: 25px;
+  }
+
+  .greeting {
+    font-size: 17px;
+    line-height: 1.6;
+  }
+
+  /* Event cards */
+  .celebration {
+    width: 100%;
+    margin: 22px auto;
+    padding: 20px 10px;
+    background: rgba(248, 237, 237, 0.65);
+    border-radius: 10px;
+  }
+
+  .celebration h2 {
+    font-size: 16px;
+    letter-spacing: 2px;
+    line-height: 1.6;
+  }
+
+  .subtitle {
+    font-size: 15px;
+    line-height: 1.6;
+  }
+
+  .script-name {
+    font-size: 22px;
+    font-weight: 600;
+    line-height: 1.5;
+    margin: 8px 0;
+    text-wrap: balance;
+    overflow-wrap: break-word;
+  }
+
+  .ampersand {
+    font-size: 32px;
+  }
+
+  /* Event details */
+  .event-details {
+    width: 100%;
+    margin: 28px auto;
+  }
+
+  .detail-row {
+    grid-template-columns: 24px 76px minmax(0, 1fr);
+    gap: 8px;
+    font-size: 16px;
+    line-height: 1.6;
+    margin: 16px 0;
+  }
+
+  .detail-row svg {
+    width: 21px;
+    height: 21px;
+  }
+
+  .detail-row strong {
+    padding-right: 7px;
+  }
+
+  /* Google Maps button */
+  .map-button {
+    padding: 12px 25px;
+    font-size: 14px;
+  }
+
+  /* Countdown */
+  .wedding-countdown {
+    width: 100%;
+    margin: 22px auto 30px;
+  }
+
+  .countdown-title {
+    font-size: 17px;
+    line-height: 1.5;
+    font-weight: 500;
+  }
+
+  .countdown-items {
+    gap: 7px;
+  }
+
+  .countdown-item {
+    min-width: 0;
+    flex: 1;
+    padding: 10px 3px;
+  }
+
+  .countdown-item span {
+    font-size: 21px;
+  }
+
+  .countdown-item small {
+    font-size: 10px;
+    letter-spacing: 0;
+  }
+
+  /* Closing */
+  .thank-you {
+    margin-top: 18px;
+  }
+
+  .family-name {
+    font-size: 30px;
+    line-height: 1.4;
+    color: #701c2a;
+  }
+
+  /* Flowers */
+  .flower-decoration {
+    width: 42%;
+    max-width: 190px;
+  }
+
+  /* Music button */
+  .music-button {
+    top: 12px;
+    left: 12px;
+    width: 40px;
+    height: 40px;
+  }
+}
